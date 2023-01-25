@@ -17,7 +17,7 @@ export class FetchApiServices {
   }
 
   //  user registration 
-  public userRegistration(userDetails: any): Observable<any> {
+  public userRegistration(userDetails: { Username: string, Password: string, Email: string, Birthday: any }): Observable<any> {
     console.log(userDetails);
     return this.http.post(apiUrl + 'users', userDetails).pipe(
       catchError(this.handleError)
@@ -118,7 +118,7 @@ export class FetchApiServices {
   }
 
   // Edit user
-  public editUser(username: string, userDetails: any): Observable<any> {
+  public editUser(username: string, userDetails: { Username: string, Password: string, Email: string, Birthday: any }): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.put(apiUrl + 'users/' + username,
       // body = object with user data
