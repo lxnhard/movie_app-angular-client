@@ -1,0 +1,25 @@
+.profile-view-container {
+  max-width: 512px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.title {
+  font-size: larger;
+}
+
+.title-update {
+  font-size: medium;
+  margin-bottom: 10px;
+}
+
+.profile-form-update {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.buttons {
+  margin: 0 0 0 auto;
+}

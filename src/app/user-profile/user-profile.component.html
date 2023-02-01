@@ -1,0 +1,47 @@
+<mat-card class="profile-view-container">
+
+  <mat-card-header class="header">
+    <mat-card-title class="title">Your user profile</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p><span class="caption">Username: </span>{{user.Username}}</p>
+    <p><span class="caption">Email: </span>{{user.Email}}</p>
+    <p><span class="caption">Birthday: </span>{{user.Birthday}}</p>
+    <mat-divider></mat-divider>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="profile-view-container">
+
+  <mat-card-header class="header">
+    <mat-card-title class="title-update">Update profile:</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form class="profile-form-update">
+      <mat-form-field>
+        <input matInput [(ngModel)]="user_new.Username" placeholder="New username" type="text" name="Username" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="user_new.Password" type="password" placeholder="New password" name="Password"
+          required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="user_new.Email" type="email" placeholder="New e-mail" name="Email" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [(ngModel)]="user_new.Birthday" type="date" placeholder="New birthday" name="Birthday">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions class="buttons">
+    <button mat-raised-button color="secondary" (click)="deleteUser()">
+      Delete profile
+    </button>
+    <button mat-raised-button color="primary" (click)="editUser()">
+      Update
+    </button>
+  </mat-card-actions>
+
+</mat-card>
