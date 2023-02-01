@@ -1,4 +1,3 @@
-// src/app/user-registration-form/user-registration-form.component.ts
 import { Component, OnInit, Input } from '@angular/core';
 
 // You'll use this import to close the dialog on success
@@ -33,11 +32,11 @@ export class UserRegistrationFormComponent implements OnInit {
     this.fetchApiData.userRegistration(this.userDetails).subscribe((result) => {
       // Logic for a successful user registration goes here! (To be implemented)
       this.dialogRef.close(); // This will close the modal on success!
-      this.snackBar.open(result, 'OK', {
+      this.snackBar.open('Registration successful. Welcome to Watch-til-Death.', 'OK', {
         duration: 2000
       });
     }, (result) => {
-      this.snackBar.open(result, 'OK', {
+      this.snackBar.open(result.errors[0].msg, 'OK', {
         duration: 2000
       });
     });
