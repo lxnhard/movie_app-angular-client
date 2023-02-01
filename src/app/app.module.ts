@@ -25,6 +25,7 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { GenreViewComponent } from './genre-view/genre-view.component';
 import { DirectorViewComponent } from './director-view/director-view.component';
+import { SynopsisViewComponent } from './synopsis-view/synopsis-view.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -43,7 +44,8 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     UserProfileComponent,
     GenreViewComponent,
-    DirectorViewComponent
+    DirectorViewComponent,
+    SynopsisViewComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
