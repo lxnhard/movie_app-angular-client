@@ -89,8 +89,10 @@ export class FetchApiServices {
   }
 
   // Get user
-  public getUser(username: string): Observable<any> {
+  public getUser(): Observable<any> {
     const token = localStorage.getItem('token');
+    const username = localStorage.getItem('user');
+
     return this.http.get(apiUrl + 'users/' + username, {
       headers: new HttpHeaders(
         {
@@ -104,8 +106,10 @@ export class FetchApiServices {
 
 
   // Add a movie to favourite Movies
-  public postFavorite(username: string, movie: string): Observable<any> {
+  public postFavorite(movie: string): Observable<any> {
     const token = localStorage.getItem('token');
+    const username = localStorage.getItem('user');
+
     return this.http.post(apiUrl + 'users/' + username + "/" + movie, {
       headers: new HttpHeaders(
         {
@@ -118,8 +122,10 @@ export class FetchApiServices {
   }
 
   // Edit user
-  public editUser(username: string, userDetails: { Username: string, Password: string, Email: string, Birthday: any }): Observable<any> {
+  public editUser(userDetails: { Username: string, Password: string, Email: string, Birthday: any }): Observable<any> {
     const token = localStorage.getItem('token');
+    const username = localStorage.getItem('user');
+    console.log(userDetails);
     return this.http.put(apiUrl + 'users/' + username,
       // body = object with user data
       userDetails,
@@ -136,8 +142,9 @@ export class FetchApiServices {
   }
 
   // Delete user and
-  public deleteUser(username: string): Observable<any> {
+  public deleteUser(): Observable<any> {
     const token = localStorage.getItem('token');
+    const username = localStorage.getItem('user');
     return this.http.delete(apiUrl + 'users/' + username,
       {
         headers: new HttpHeaders(
@@ -152,8 +159,10 @@ export class FetchApiServices {
   }
 
   // Delete a movie from the favorite movies
-  public deleteFavorite(username: string, movie: string): Observable<any> {
+  public deleteFavorite(movie: string): Observable<any> {
     const token = localStorage.getItem('token');
+    const username = localStorage.getItem('user');
+
     return this.http.delete(apiUrl + 'users/' + username + "/" + movie,
       {
         headers: new HttpHeaders(
