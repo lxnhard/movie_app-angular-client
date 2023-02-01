@@ -8,7 +8,7 @@
     <img mat-card-lg-image class="image" src={{movie.ImagePath}} alt={{movie.Title}} />
     <mat-divider></mat-divider>
     <mat-card-actions class="actions">
-      <button mat-button color="primary">
+      <button mat-button color="primary" (click)="openGenreDialog(movie.Genre.Name, movie.Genre.Description)">
         Genre
       </button>
       <button mat-button color="primary">
