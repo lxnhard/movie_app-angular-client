@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" class="nav-bar">
+  <mat-toolbar-row class="nav-container">
+    <!-- <a mat-button [routerLink]="'/movies'"> -->
+    <a mat-button [routerLink]="isLoggedIn() ? ['/movies'] : ['/welcome']">
+      <h1>Watch-til-Death</h1>
+    </a>
+    <div class="nav-icons">
+      <a mat-button [routerLink]="'/profile'" *ngIf="isLoggedIn()"><mat-icon
+          class="icon-scale">account_circle</mat-icon></a>
+      <a mat-button [routerLink]="'/welcome'" (click)="onLogout()" *ngIf="isLoggedIn()"><mat-icon
+          class="icon-scale">power_settings_new</mat-icon></a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

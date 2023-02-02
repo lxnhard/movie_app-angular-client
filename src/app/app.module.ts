@@ -15,6 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { FormsModule } from '@angular/forms';
 
@@ -26,6 +27,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { GenreViewComponent } from './genre-view/genre-view.component';
 import { DirectorViewComponent } from './director-view/director-view.component';
 import { SynopsisViewComponent } from './synopsis-view/synopsis-view.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
@@ -45,7 +47,8 @@ const appRoutes: Routes = [
     UserProfileComponent,
     GenreViewComponent,
     DirectorViewComponent,
-    SynopsisViewComponent
+    SynopsisViewComponent,
+    NavBarComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -61,6 +64,7 @@ const appRoutes: Routes = [
     MatSnackBarModule,
     MatIconModule,
     MatDividerModule,
+    MatToolbarModule,
     FormsModule
   ],
   providers: [],
