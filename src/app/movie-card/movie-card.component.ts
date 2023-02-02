@@ -10,8 +10,11 @@ import { SynopsisViewComponent } from '../synopsis-view/synopsis-view.component'
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.scss']
 })
+
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
+  favorites: any[] = [];
+
   constructor(
     public fetchApiData: FetchApiServices,
     public dialog: MatDialog) { }
@@ -19,13 +22,36 @@ export class MovieCardComponent implements OnInit {
   // lifecycle hook: called after creating component
   ngOnInit(): void {
     this.getMovies();
+    this.getFavorites();
   }
 
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-      console.log(this.movies);
       return this.movies;
+    });
+  }
+
+  getFavorites(): void {
+    this.fetchApiData.getUser().subscribe((resp: any) => {
+      this.favorites = resp.FavoriteMovies;
+      return this.favorites;
+    })
+  }
+
+  isFavorite(movie_id: string): boolean {
+    return this.favorites.includes(movie_id);
+  }
+
+  removeFavorite(movie_id: string): void {
+    this.fetchApiData.deleteFavorite(movie_id).subscribe((resp: any) => {
+      this.favorites = this.favorites.filter(id => id !== movie_id);
+    })
+  }
+
+  addFavorite(movie_id: string): void {
+    this.fetchApiData.addFavorite(movie_id).subscribe((resp: any) => {
+      this.favorites.push(movie_id);
     });
   }
 
