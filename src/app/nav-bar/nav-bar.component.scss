@@ -1,8 +1,25 @@
-.nav-container {
+.nav-bar {
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  margin: 0;
 }
 
-.icon-scale {
-  transform: scale(2);
+.nav-title {
+  text-decoration: none;
+}
+
+.nav-icon {
+  transform: scale(1.5);
+}
+
+
+@media all and (max-width: 375px) {
+  .nav-bar {
+    padding: 0;
+  }
+
+  .nav-title {
+    font-size: 14px;
+  }
 }

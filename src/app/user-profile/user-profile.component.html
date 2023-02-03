@@ -10,9 +10,6 @@
     <p><span class="caption">Birthday: </span>{{user.Birthday}}</p>
     <mat-divider></mat-divider>
   </mat-card-content>
-</mat-card>
-
-<mat-card class="profile-view-container">
 
   <mat-card-header class="header">
     <mat-card-title class="title-update">Update profile:</mat-card-title>
@@ -36,10 +33,10 @@
     </form>
   </mat-card-content>
   <mat-card-actions class="buttons">
-    <button mat-raised-button color="secondary" (click)="deleteUser()">
+    <button mat-raised-button color="secondary" (click)="deleteUser()" role="button" class="button-delete">
       Delete profile
     </button>
-    <button mat-raised-button color="primary" (click)="editUser()">
+    <button mat-raised-button color="primary" role="button" (click)="editUser()">
       Update
     </button>
   </mat-card-actions>

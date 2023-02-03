@@ -1,17 +1,22 @@
 .profile-view-container {
   max-width: 512px;
-  margin: 0 auto;
+  margin: 20px auto 40px auto;
   display: flex;
   justify-content: center;
 }
 
 .title {
-  font-size: larger;
+  font-size: 1.2em;
+}
+
+.caption {
+  font-weight: 600;
+  padding-right: 5px;
 }
 
 .title-update {
-  font-size: medium;
-  margin-bottom: 10px;
+  font-size: 1.2em;
+  margin-bottom: 20px;
 }
 
 .profile-form-update {
@@ -21,5 +26,9 @@
 }
 
 .buttons {
-  margin: 0 0 0 auto;
+  margin: 0 10px 0 auto;
+}
+
+.button-delete {
+  margin-right: 10px;
 }

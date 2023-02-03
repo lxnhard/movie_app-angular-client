@@ -3,6 +3,8 @@
     <mat-card-title class="title">{{title}}</mat-card-title>
     <mat-card-subtitle>Directed by: {{director}}</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>{{synopsis}}</mat-card-content>
-  <!-- <img mat-card-lg-image class="image" src={{movie.ImagePath}} alt={{movie.Title}} /> -->
+  <mat-card-content class="content">{{synopsis}}</mat-card-content>
+  <mat-card-actions>
+    <button mat-button mat-dialog-close role="button" class="button-close">Close</button>
+  </mat-card-actions>
 </mat-card>

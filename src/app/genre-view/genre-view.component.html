@@ -1,2 +1,9 @@
-<p>{{genreName}}</p>
-<p>{{genreDescription}}</p>
+<mat-card>
+  <mat-card-header class="header">
+    <mat-card-title class="title">{{genreName}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="content">{{genreDescription}}</mat-card-content>
+  <mat-card-actions>
+    <button mat-button mat-dialog-close role="button" class="button-close">Close</button>
+  </mat-card-actions>
+</mat-card>

@@ -40,13 +40,15 @@ export class UserProfileComponent implements OnInit {
       // this.router.navigate(['/welcome']);
       localStorage.setItem('user', result.Username);
       this.snackBar.open('Your profile has been updated.', 'OK', {
-        duration: 2000
+        duration: 2000,
+        panelClass: ['snackbar']
       });
       this.getUser();
     }, (result) => {
       console.log(result);
       this.snackBar.open(result, 'OK', {
-        duration: 2000
+        duration: 2000,
+        panelClass: ['snackbar']
       });
     });
   }
@@ -56,12 +58,14 @@ export class UserProfileComponent implements OnInit {
       this.fetchApiData.deleteUser().subscribe((result) => {
         localStorage.clear();
         this.snackBar.open('Your profile has been deleted.', 'OK', {
-          duration: 2000
+          duration: 2000,
+          panelClass: ['snackbar']
         });
         this.router.navigate(['welcome']);
       }, (result) => {
         this.snackBar.open(result, 'OK', {
-          duration: 2000
+          duration: 2000,
+          panelClass: ['snackbar']
         });
         this.router.navigate(['welcome']);
       });
