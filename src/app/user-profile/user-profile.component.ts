@@ -29,7 +29,6 @@ export class UserProfileComponent implements OnInit {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       resp.Birthday = resp.Birthday.slice(0, 10);
       this.user = resp;
-      console.log(this.user);
       return this.user;
     });
   }
@@ -45,7 +44,6 @@ export class UserProfileComponent implements OnInit {
       });
       this.getUser();
     }, (result) => {
-      console.log(result);
       this.snackBar.open(result, 'OK', {
         duration: 2000,
         panelClass: ['snackbar']
