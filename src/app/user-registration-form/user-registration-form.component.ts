@@ -4,7 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 // This import brings in the API calls we created in 6.2
-import { FetchApiServices } from '../fetch-api-data.service';
+import { FetchApiDataService } from '../fetch-api-data.service';
 
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -20,16 +20,19 @@ export class UserRegistrationFormComponent implements OnInit {
   @Input() userDetails = { Username: '', Password: '', Email: '', Birthday: '' };
 
   constructor(
-    public fetchApiData: FetchApiServices,
+    public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
     public snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
-  // This is the function responsible for sending the form inputs to the backend
-  registerUser(): void {
-    this.fetchApiData.userRegistration(this.userDetails).subscribe((result) => {
+  /**
+   * Register user according to form input via API request
+   * @param userDetails - object with userDetails
+   */
+  registerUser(userDetails: any): void {
+    this.fetchApiData.userRegistration(userDetails).subscribe((result) => {
       // Logic for a successful user registration goes here! (To be implemented)
       this.dialogRef.close(); // This will close the modal on success!
       this.snackBar.open('Registration successful. Welcome to Watch-til-Death.', 'OK', {
@@ -37,7 +40,7 @@ export class UserRegistrationFormComponent implements OnInit {
         panelClass: ['snackbar']
       });
     }, (result) => {
-      this.snackBar.open(result.errors[0].msg, 'OK', {
+      this.snackBar.open(result, 'OK', {
         duration: 2000,
         panelClass: ['snackbar']
       });

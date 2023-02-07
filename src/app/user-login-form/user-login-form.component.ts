@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { FetchApiServices } from '../fetch-api-data.service';
+import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -14,7 +14,7 @@ export class UserLoginFormComponent implements OnInit {
   @Input() loginData = { username: '', password: '' };
 
   constructor(
-    public fetchApiData: FetchApiServices,
+    public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar,
     private router: Router
@@ -23,9 +23,13 @@ export class UserLoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  // This is the function responsible for sending the form inputs to the backend
-  loginUser(): void {
-    this.fetchApiData.userLogin(this.loginData.username, this.loginData.password).subscribe((result) => {
+  /**
+   * Log in user according to form input via API request, save token + username in localStorage
+   * @param username - Username as a string
+   * @param password - Password as a string
+   */
+  loginUser(username: string, password: string): void {
+    this.fetchApiData.userLogin(username, password).subscribe((result) => {
       // Logic for a successful user login goes here! (To be implemented)
       localStorage.setItem('token', result.token);
       localStorage.setItem('user', result.user.Username);

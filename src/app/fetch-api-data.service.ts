@@ -10,27 +10,42 @@ const apiUrl = 'https://watch-til-death.cyclic.app/';
   providedIn: 'root'
 })
 
-export class FetchApiServices {
+export class FetchApiDataService {
   // Inject the HttpClient module to the constructor params
   // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {
   }
 
-  //  user registration 
+  /**
+   * Register new user
+   *
+   * @param userDetails - an object containing username, password, email and (optionally) birth date 
+   * @returns An object containing username, password, email and (optionally) birth date
+   */
   public userRegistration(userDetails: { Username: string, Password: string, Email: string, Birthday: any }): Observable<any> {
     return this.http.post(apiUrl + 'users', userDetails).pipe(
       catchError(this.handleError)
     );
   }
 
-  // login 
+  /**
+  * Login user
+  *
+  * @param username - username
+  * @param password - password
+  * @returns An object containing username, password, email, birth date (optional), favorite movies (optional)
+  */
   public userLogin(username: string, password: string): Observable<any> {
     return this.http.post(apiUrl + 'login?Username=' + username + '&Password=' + password, null).pipe(
       catchError(this.handleError)
     );
   }
 
-  // get all movies
+  /**
+  * Get all movies
+  *
+  * @returns An array of objects containing information about all movies in the database
+  */
   public getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies', {
@@ -45,7 +60,11 @@ export class FetchApiServices {
   }
 
 
-  // Get user
+  /**
+  * Get user
+  *
+  * @returns An object containing information about the user currently logged in
+  */
   public getUser(): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
@@ -62,7 +81,11 @@ export class FetchApiServices {
   }
 
 
-  // Delete a movie from the favorite movies
+  /**
+  * Deletes movie from favorites of current user
+  *
+  * @param movie - ID of a specific movie.
+  */
   public deleteFavorite(movie: string): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
@@ -81,7 +104,11 @@ export class FetchApiServices {
   }
 
 
-  // Add a movie to favourite Movies
+  /**
+  * Add a movie to favorites of current user
+  *
+  * @param movie - ID of a specific movie.
+  */
   public addFavorite(movie: string): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
@@ -96,7 +123,12 @@ export class FetchApiServices {
     );
   }
 
-  // Edit user
+  /**
+  * Edit profile details of the user currently logged in
+  *
+  * @param userDetails - an object containing new username, password, email and (optionally) birth date 
+  * @returns An object containing the new username, password, email and (optionally) birth date
+  */
   public editUser(userDetails: { Username: string, Password: string, Email: string, Birthday: any }): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');
@@ -115,7 +147,10 @@ export class FetchApiServices {
       );
   }
 
-  // Delete user and
+  /**
+  * Delete/unregister current user from database
+  *
+  */
   public deleteUser(): Observable<any> {
     const token = localStorage.getItem('token');
     const username = localStorage.getItem('user');

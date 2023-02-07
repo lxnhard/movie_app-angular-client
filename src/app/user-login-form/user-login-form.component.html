@@ -14,7 +14,8 @@
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button (click)="loginUser()" color="primary" role="button" class="button">
+    <button mat-raised-button (click)="loginUser(loginData.username, loginData.password)" color="primary" role="button"
+      class="button">
       Submit
     </button>
   </mat-card-actions>

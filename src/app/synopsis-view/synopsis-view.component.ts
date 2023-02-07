@@ -12,6 +12,7 @@ export class SynopsisViewComponent {
   director: string;
 
   constructor(
+    /* inject data from movie card component */
     private dialogRef: MatDialogRef<SynopsisViewComponent>, @Inject(MAT_DIALOG_DATA) data: any
   ) {
     this.synopsis = data.Synopsis,

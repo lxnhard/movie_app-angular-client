@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FetchApiServices } from '../fetch-api-data.service'
+import { FetchApiDataService } from '../fetch-api-data.service'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -15,7 +15,7 @@ export class UserProfileComponent implements OnInit {
   @Input() user_new = { Username: '', Password: '', Email: '', Birthday: '' };
 
   constructor(
-    public fetchApiData: FetchApiServices,
+    public fetchApiData: FetchApiDataService,
     public snackBar: MatSnackBar,
     public router: Router
   ) { }
@@ -25,14 +25,19 @@ export class UserProfileComponent implements OnInit {
     this.getUser();
   }
 
+  /**
+   * Get current user data (object) via API request, save in user variable
+   */
   getUser(): void {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       resp.Birthday = resp.Birthday.slice(0, 10);
       this.user = resp;
-      return this.user;
     });
   }
 
+  /**
+   * Overwrite current with new user data (object) via API request
+   */
   editUser(): void {
     this.fetchApiData.editUser(this.user_new).subscribe((result) => {
       // this.dialogRef.close(); // This will close the modal on success!
@@ -51,6 +56,9 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * Delete current user via API request, clear local Storage
+   */
   deleteUser(): void {
     if (confirm("Are you sure you want to delete your user profile irrevocably?")) {
       this.fetchApiData.deleteUser().subscribe((result) => {
