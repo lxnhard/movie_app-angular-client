@@ -1,27 +1,36 @@
 # MovieAppAngularClient
 
+This repository contains the client side for my web application Watch-Til-Death, built with Angular and Angular Material. The web application provides users with access to information about different movies, directors, and genres. Users are able to sign up, update their personal information, and create a list of their favorite movies. The app implements JWT token-based user authentication. 
+
+<img  src="./screenshot.png" width="600" /> 
+
+## Table of contents
+
+- [Links](#links)
+- [Setup instructions](#setup-instructions)
+- [What I learned](#what-i-learned)
+
+## Links
+
+- Deployed app: [https://lxnhard.github.io/movie_app-angular-client]
+- Rest API: [https://github.com/lxnhard/movie_api]
+
+## Setup instructions
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.2.
 
-## Development server
+### Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
+### Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## What I learned
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Building an app with Angular, including
+ - consuming REST API with HttpClient
+ - Injectables
+ - design with Angular Material
+- Technical documentation with TypeDoc 
